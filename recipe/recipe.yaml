@@ -1,7 +1,6 @@
 context:
   name: tree-sitter-yaml
   version: "0.7.0"
-  python_min: 3.9
 
 package:
   name: ${{ name|lower }}
@@ -13,8 +12,9 @@ source:
 
 build:
   script:
-    - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-  number: 1
+    - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
+  number: 2
+
 
 requirements:
   build:
@@ -22,8 +22,8 @@ requirements:
     - ${{ stdlib("c") }}
     - if: target_platform != build_platform
       then:
-        - python
         - cross-python_${{ target_platform }}
+        - python
   host:
     - pip
     - python
