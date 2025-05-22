@@ -1,6 +1,6 @@
 context:
   name: tree-sitter-yaml
-  version: "0.7.0"
+  version: "0.7.1"
 
 package:
   name: ${{ name|lower }}
@@ -13,7 +13,7 @@ source:
 build:
   script:
     - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
-  number: 2
+  number: 0
 
 
 requirements:
