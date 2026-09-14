@@ -12,12 +12,7 @@ source:
 
 build:
   script:
-    - if: unix
-      then:
-        - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
-    - if: win
-      then:
-        - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
+    - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
   number: 4
 
 
