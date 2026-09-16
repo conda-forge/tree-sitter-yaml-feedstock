@@ -12,23 +12,8 @@ source:
 
 build:
   script:
-    - if: unix
-      then:
-        - |
-          ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
-          
-          if [ "${CONDA_BUILD_CROSS_COMPILATION:-0}" = "1" ]; then
-            for _f in "${PREFIX}"/lib/python*/site-packages/${{ name | replace("-", "_") }}/_binding.abi3-*.so; do
-              [ -e "${_f}" ] || continue
-              _want="$(dirname "${_f}")/_binding.abi3.so"
-              echo "cross-build: renaming $(basename "${_f}") -> $(basename "${_want}")"
-              mv -f "${_f}" "${_want}"
-            done
-          fi
-    - if: win
-      then:
-        - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
-  number: 3
+    - ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
+  number: 4
 
 
 requirements:
